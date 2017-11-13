@@ -16,6 +16,13 @@ use Zend\Expressive\Container\NotFoundDelegateFactory;
 use Zend\Expressive\Container\NotFoundHandlerFactory;
 use Zend\Expressive\Delegate\DefaultDelegate;
 use Zend\Expressive\Delegate\NotFoundDelegate;
+use Zend\Expressive\Helper\ServerUrlHelper;
+use Zend\Expressive\Helper\ServerUrlMiddleware;
+use Zend\Expressive\Helper\ServerUrlMiddlewareFactory;
+use Zend\Expressive\Helper\UrlHelper;
+use Zend\Expressive\Helper\UrlHelperFactory;
+use Zend\Expressive\Helper\UrlHelperMiddleware;
+use Zend\Expressive\Helper\UrlHelperMiddlewareFactory;
 use Zend\Expressive\Middleware\ErrorResponseGenerator;
 use Zend\Expressive\Middleware\ImplicitHeadMiddleware;
 use Zend\Expressive\Middleware\ImplicitOptionsMiddleware;
@@ -48,6 +55,11 @@ return [
             ImplicitHeadMiddleware::class    => InvokableFactory::class,
             ImplicitOptionsMiddleware::class => InvokableFactory::class,
             OriginalMessages::class          => InvokableFactory::class,
+
+            ServerUrlHelper::class     => InvokableFactory::class,
+            UrlHelper::class           => UrlHelperFactory::class,
+            ServerUrlMiddleware::class => ServerUrlMiddlewareFactory::class,
+            UrlHelperMiddleware::class => UrlHelperMiddlewareFactory::class,
 
             ErrorHandler::class           => ErrorHandlerFactory::class,
             ErrorResponseGenerator::class => ErrorResponseGeneratorFactory::class,
