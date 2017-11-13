@@ -20,7 +20,7 @@
 					},
 					{
 						"key": "signaturecertchainurl",
-						"value": "https://s3.amazonaws.com/echo.api/echo-api-cert-4.pem",
+						"value": "https://s3.amazonaws.com/echo.api/echo-api-cert-5.pem",
 						"description": ""
 					},
 					{
@@ -50,7 +50,7 @@
 					},
 					{
 						"key": "signaturecertchainurl",
-						"value": "https://s3.amazonaws.com/echo.api/echo-api-cert-4.pem",
+						"value": "https://s3.amazonaws.com/echo.api/echo-api-cert-5.pem",
 						"description": ""
 					},
 					{
@@ -80,7 +80,7 @@
 					},
 					{
 						"key": "signaturecertchainurl",
-						"value": "https://s3.amazonaws.com/echo.api/echo-api-cert-4.pem",
+						"value": "https://s3.amazonaws.com/echo.api/echo-api-cert-5.pem",
 						"description": ""
 					},
 					{
@@ -110,7 +110,7 @@
 					},
 					{
 						"key": "signaturecertchainurl",
-						"value": "https://s3.amazonaws.com/echo.api/echo-api-cert-4.pem",
+						"value": "https://s3.amazonaws.com/echo.api/echo-api-cert-5.pem",
 						"description": ""
 					},
 					{
@@ -140,7 +140,7 @@
 					},
 					{
 						"key": "signaturecertchainurl",
-						"value": "https://s3.amazonaws.com/echo.api/echo-api-cert-4.pem",
+						"value": "https://s3.amazonaws.com/echo.api/echo-api-cert-5.pem",
 						"description": ""
 					},
 					{
@@ -170,7 +170,7 @@
 					},
 					{
 						"key": "signaturecertchainurl",
-						"value": "https://s3.amazonaws.com/echo.api/echo-api-cert-4.pem",
+						"value": "https://s3.amazonaws.com/echo.api/echo-api-cert-5.pem",
 						"description": ""
 					},
 					{
