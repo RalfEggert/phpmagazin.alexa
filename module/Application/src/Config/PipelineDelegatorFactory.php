@@ -11,9 +11,14 @@
 namespace Application\Config;
 
 use Interop\Container\ContainerInterface;
-use TravelloAlexaLibrary\Middleware\InjectAlexaRequestMiddleware;
-use TravelloAlexaLibrary\Middleware\InjectCertificateValidatorMiddleware;
+use TravelloAlexaZf\Middleware\CheckApplicationMiddleware;
+use TravelloAlexaZf\Middleware\ConfigureSkillMiddleware;
+use TravelloAlexaZf\Middleware\LogAlexaRequestMiddleware;
+use TravelloAlexaZf\Middleware\SetLocaleMiddleware;
+use TravelloAlexaZf\Middleware\ValidateCertificateMiddleware;
 use Zend\Expressive\Application;
+use Zend\Expressive\Helper\ServerUrlMiddleware;
+use Zend\Expressive\Helper\UrlHelperMiddleware;
 use Zend\Expressive\Middleware\ImplicitHeadMiddleware;
 use Zend\Expressive\Middleware\ImplicitOptionsMiddleware;
 use Zend\Expressive\Middleware\NotFoundHandler;
@@ -44,10 +49,15 @@ class PipelineDelegatorFactory implements DelegatorFactoryInterface
         $application->pipe(OriginalMessages::class);
 
         $application->pipe(ErrorHandler::class);
-        $application->pipe(InjectAlexaRequestMiddleware::class);
-        $application->pipe(InjectCertificateValidatorMiddleware::class);
+        $application->pipe(ServerUrlMiddleware::class);
 
         $application->pipeRoutingMiddleware();
+        $application->pipe(ConfigureSkillMiddleware::class);
+        $application->pipe(LogAlexaRequestMiddleware::class);
+        $application->pipe(CheckApplicationMiddleware::class);
+        $application->pipe(ValidateCertificateMiddleware::class);
+        $application->pipe(SetLocaleMiddleware::class);
+        $application->pipe(UrlHelperMiddleware::class);
         $application->pipe(ImplicitHeadMiddleware::class);
         $application->pipe(ImplicitOptionsMiddleware::class);
         $application->pipeDispatchMiddleware();
