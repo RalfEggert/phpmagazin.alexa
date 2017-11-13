@@ -79,16 +79,14 @@ class AnimalIntent extends AbstractIntent
     }
 
     /**
-     * @param string $speciesSlot
-     *
      * @return string
      */
-    private function getRandomAnimal(string $speciesSlot = null)
+    private function getRandomAnimal()
     {
         $locale = $this->getAlexaRequest()->getRequest()->getLocale();
 
         do {
-            $randomType      = is_null($speciesSlot) ? array_rand($this->getAnimalList()[$locale]) : $speciesSlot;
+            $randomType      = array_rand($this->getAnimalList()[$locale]);
             $randomAnimalKey = array_rand($this->getAnimalList()[$locale][$randomType]);
             $randomAnimal    = $this->getAnimalList()[$locale][$randomType][$randomAnimalKey];
         } while (in_array($randomAnimal, $this->sessionAnimals));
