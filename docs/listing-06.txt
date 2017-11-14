@@ -1,0 +1,47 @@
+<?php
+namespace Zoo\Intent;
+
+use TravelloAlexaLibrary\Intent\AbstractIntent;
+use TravelloAlexaLibrary\Response\AlexaResponse;
+use TravelloAlexaLibrary\Response\Card\Standard;
+use TravelloAlexaLibrary\Response\OutputSpeech\SSML;
+
+class AnimalIntent extends AbstractIntent
+{
+    /** ... */
+
+    /** @var array */
+    private $sessionAnimals = [];
+
+    public function handle(string $smallImageUrl, string $largeImageUrl): AlexaResponse
+    {
+        $this->sessionAnimals = $this->getAlexaResponse()->getSessionContainer()->getAttribute('animals');
+
+        $randomAnimal = $this->getRandomAnimal();
+
+        // ...
+
+        $this->getAlexaResponse()->getSessionContainer()->setAttribute('animals', $this->sessionAnimals);
+
+        return $this->getAlexaResponse();
+    }
+
+    private function getRandomAnimal()
+    {
+        $locale = $this->getAlexaRequest()->getRequest()->getLocale();
+
+        do {
+            $randomType      = array_rand($this->getAnimalList()[$locale]);
+            $randomAnimalKey = array_rand($this->getAnimalList()[$locale][$randomType]);
+            $randomAnimal    = $this->getAnimalList()[$locale][$randomType][$randomAnimalKey];
+        } while (in_array($randomAnimal, $this->sessionAnimals));
+
+        if (count($this->sessionAnimals) >= 5) {
+            array_shift($this->sessionAnimals);
+        }
+
+        $this->sessionAnimals[] = $randomAnimal;
+
+        return $randomAnimal;
+    }
+}
