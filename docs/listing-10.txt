@@ -1,0 +1,34 @@
+<?php
+namespace Zoo;
+
+use Zoo\Intent\AbstractIntentFactory;
+use Zoo\Intent\AnimalIntent;
+use Zoo\Intent\CountIntent;
+
+class ConfigProvider
+{
+    /** ... */
+
+    public function getSkills(): array
+    {
+        return [
+            self::NAME => [
+                /** ... */
+
+                'intents'          => [
+                    'aliases' => [
+                        AnimalIntent::NAME => AnimalIntent::class,
+                        CountIntent::NAME  => CountIntent::class,
+                    ],
+
+                    'factories' => [
+                        AnimalIntent::class => AbstractIntentFactory::class,
+                        CountIntent::class  => AbstractIntentFactory::class,
+                    ],
+                ],
+
+                /** ... */
+            ]
+        ];
+    }
+}

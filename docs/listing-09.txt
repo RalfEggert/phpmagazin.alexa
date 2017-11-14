@@ -1,0 +1,19 @@
+<?php
+namespace Zoo\Intent;
+
+use TravelloAlexaLibrary\Intent\AbstractIntent as BaseAbstractIntent;
+
+abstract class AbstractIntent extends BaseAbstractIntent
+{
+    private $animalList = [];
+
+    public function setAnimalList(array $animalList)
+    {
+        $this->animalList = $animalList;
+    }
+
+    protected function getAnimalList(): array
+    {
+        return $this->animalList;
+    }
+}
