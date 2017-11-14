@@ -1,0 +1,9 @@
+<?php
+return [
+    /* ... */
+
+    'animalTitle'     => 'Ein Tier',
+    'animalMessage'   => '%1$s lebt in deinem Zoo!',
+    'countTitle'      => 'Tierzählung',
+    'countMessage'    => 'In deinem Zoo leben %1$s Tiere!',
+];

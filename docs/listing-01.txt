@@ -1,0 +1,38 @@
+<?php
+namespace Zoo;
+
+use TravelloAlexaLibrary\Application\AlexaApplication;
+use TravelloAlexaLibrary\TextHelper\TextHelper;
+use Zend\Expressive\Application;
+use Zoo\Config\RouterDelegatorFactory;
+
+class ConfigProvider
+{
+    const NAME = 'zoo-skill';
+
+    /** ... */
+
+    public function getSkills(): array
+    {
+        return [
+            self::NAME => [
+                'applicationId'    => 'amzn1.ask.skill.place-your-skill-id-here',
+                'applicationClass' => AlexaApplication::class,
+                'textHelperClass'  => TextHelper::class,
+                'sessionDefaults'  => [
+                    'animals' => [],
+                ],
+                'smallImageUrl'    => 'https://www.travello.audio/cards/zoo-480x480.png',
+                'largeImageUrl'    => 'https://www.travello.audio/cards/zoo-800x800.png',
+                'intents'          => [
+                    'aliases'   => [],
+                    'factories' => [],
+                ],
+                'texts'            => [
+                    'de-DE' => include PROJECT_ROOT . '/data/texts/zoo.common.texts.de-DE.php',
+                    'en-US' => include PROJECT_ROOT . '/data/texts/zoo.common.texts.en-US.php',
+                ],
+            ]
+        ];
+    }
+}

@@ -18,4 +18,8 @@ return [
     'cancelMessage'   => 'Thanks and see you soon!',
     'stopTitle'       => 'Thanks',
     'stopMessage'     => 'Thanks and see you soon!',
+    'animalTitle'     => 'An animal',
+    'animalMessage'   => '%1$s lives in your zoo!',
+    'countTitle'      => 'Animal census',
+    'countMessage'    => '%1$s animals live in your zoo!',
 ];
