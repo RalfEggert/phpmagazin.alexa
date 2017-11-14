@@ -1,0 +1,32 @@
+<?php
+namespace Zoo\Intent;
+
+use TravelloAlexaLibrary\Intent\AbstractIntent;
+use TravelloAlexaLibrary\Response\AlexaResponse;
+use TravelloAlexaLibrary\Response\Card\Standard;
+use TravelloAlexaLibrary\Response\OutputSpeech\SSML;
+
+class AnimalIntent extends AbstractIntent
+{
+    const NAME = 'AnimalIntent';
+
+    public function handle(string $smallImageUrl, string $largeImageUrl): AlexaResponse
+    {
+        $zooMessage = $this->getTextHelper()->getAnimalMessage('Ein Elefant');
+
+        $this->getAlexaResponse()->setOutputSpeech(
+            new SSML($zooMessage)
+        );
+
+        $this->getAlexaResponse()->setCard(
+            new Standard(
+                $this->getTextHelper()->getAnimalTitle(),
+                $zooMessage,
+                $smallImageUrl,
+                $largeImageUrl
+            )
+        );
+
+        return $this->getAlexaResponse();
+    }
+}
