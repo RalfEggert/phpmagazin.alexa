@@ -1,3 +1,37 @@
+# WICHTIGES UPDATE VOM 26.11.2017
+
+**Achtung** Noch vor dem Erscheinen der Ausgabe des PHP Magazins 2.18 war ein wichtiges
+Update in den zu grunde liegenden Libraries erforderlich. Deshalb weicht der Code in 
+diesem Repository von dem abgedruckten Code ab! Bisher hatte die `handle()` Methode einer
+Intent Klasse immer die beiden Parameter `$smallImageUrl` und `$largeImageUrl` entgegen
+genommen:
+
+```
+    /**
+     * @return AlexaResponse
+     */
+    public function handle(string $smallImageUrl, string $largeImageUrl): AlexaResponse
+    {
+        // code
+    }
+```
+
+Nun steht das `SkillConfiguration` Objekt direkt im Intent bereit und der Zugriff auf
+die beiden Parameter erfolgt darüber. Dies sieht nun so aus:
+
+```
+    /**
+     * @return AlexaResponse
+     */
+    public function handle(): AlexaResponse
+    {
+        $smallImageUrl = $this->getSkillConfiguration()->getSmallImageUrl();
+        $largeImageUrl = $this->getSkillConfiguration()->getLargeImageUrl();
+
+        // code
+    }
+```
+
 # PHP Magazin Alexa mit PHP
 
 Beispielprojekt für PHP Magazin über Alexa Skill Entwicklung mit PHP. Die Installation kann 
