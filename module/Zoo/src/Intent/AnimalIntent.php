@@ -28,13 +28,13 @@ class AnimalIntent extends AbstractIntent
     private $sessionAnimals = [];
 
     /**
-     * @param string $smallImageUrl
-     * @param string $largeImageUrl
-     *
      * @return AlexaResponse
      */
-    public function handle(string $smallImageUrl, string $largeImageUrl): AlexaResponse
+    public function handle(): AlexaResponse
     {
+        $smallImageUrl = $this->getSkillConfiguration()->getSmallImageUrl();
+        $largeImageUrl = $this->getSkillConfiguration()->getLargeImageUrl();
+
         $this->sessionAnimals = $this->getAlexaResponse()->getSessionContainer()->getAttribute('animals');
 
         $speciesSlot = $this->getSpeciesSlot();
