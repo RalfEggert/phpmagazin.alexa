@@ -24,13 +24,13 @@ class CountIntent extends AbstractIntent
     const NAME = 'CountIntent';
 
     /**
-     * @param string $smallImageUrl
-     * @param string $largeImageUrl
-     *
      * @return AlexaResponse
      */
-    public function handle(string $smallImageUrl, string $largeImageUrl): AlexaResponse
+    public function handle(): AlexaResponse
     {
+        $smallImageUrl = $this->getSkillConfiguration()->getSmallImageUrl();
+        $largeImageUrl = $this->getSkillConfiguration()->getLargeImageUrl();
+
         $count = $this->getAnimalCount();
 
         $zooMessage = $this->getTextHelper()->getCountMessage($count);
